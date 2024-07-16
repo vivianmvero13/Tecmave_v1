@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Cotizar</title>
+</head>
+<body>
+    <header th:fragment="header" class="header">
+    </header>
+
+
+    <main>
+        <div class="contenedor-formulario">
+            <div class="columnas">
+                <label for="nombre">NOMBRE *</label>
+                <input type="text" id="nombre" name="nombre">
+                
+                <label for="apellidos">APELLIDOS *</label>
+                <input type="text" id="apellidos" name="apellidos">
+                
+                <label for="correo">CORREO ELECTRÓNICO *</label>
+                <input type="email" id="correo" name="correo">
+                
+                <label for="telefono">TELÉFONO *</label>
+                <input type="tel" id="telefono" name="telefono">
+                
+                <label for="descripcion">DESCRIPCIÓN DEL PRBLEMA *</label>
+                <textarea id="descripcion" name="descripcion"></textarea>
+            </div>
+
+            <div class="columnas">
+                <label for="marca">MARCA DEL VEHÍCULO *</label>
+                <input type="text" id="marca" name="marca">
+                
+                <label for="modelo">MODELO DEL VEHÍCULO *</label>
+                <input type="text" id="modelo" name="modelo">
+                
+                <label for="anio">AÑO DEL VEHÍCULO *</label>
+                <input type="text" id="anio" name="anio">
+                
+                <label for="imagen">ADJUNTAR IMÁGEN *</label>
+                <input type="file" id="imagen" name="imagen">
+                <br><br><br><br><br><br>
+                <button type="submit" class="boton-cotizar">Cotizar</button>
+            </div>
+            
+            <div class="informacion">
+                <h1>COTIZA AQUI</h1>
+                <p>Completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible. Nuestros expertos están listos para ofrecerte la mejor asesoría. ¡Cotiza todo lo que necesitas!</p>
+                <img src="ejemplo.jpg" alt="Imagen de ejemplo" class="imagen">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
