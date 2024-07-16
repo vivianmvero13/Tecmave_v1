@@ -1,14 +1,87 @@
-<!DOCTYPE html>
 <html lang="es">
-<head th:replace="~{layout/plantilla :: head}">
+    <head th:replace="~{layout/plantilla :: head}">
     <title>Cotizar</title>
+    
+    <style>
+        main {
+    padding: 20px;
+}
+
+.contenedor-formulario {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+.columnas, .informacion {
+    flex: 1;
+    margin: 0 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600; 
+}
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    font-size: 16px; 
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+    border-color: #f53e2d; 
+    box-shadow: 0 0 5px rgba(245, 62, 45, 0.5); 
+    outline: none; 
+}
+
+
+textarea {
+    height: 80px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.boton-cotizar {
+    background-color: #f53e2d;
+    color: white;
+    padding: 10px 40px; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto; 
+    display: block; 
+    font-size: 16px;
+}
+
+.boton-cotizar:hover {
+    background-color: #ae2d23;
+}
+
+.informacion {
+    text-align: left;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+h1{
+    text-align: center;
+}
+    </style>
 </head>
 <body>
-    <header th:fragment="header" class="header">
-    </header>
-
-
-    <main>
+    <section th:fragment="cotizar">
         <div class="contenedor-formulario">
             <div class="columnas">
                 <label for="nombre">NOMBRE *</label>
@@ -46,9 +119,9 @@
             <div class="informacion">
                 <h1>COTIZA AQUI</h1>
                 <p>Completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible. Nuestros expertos están listos para ofrecerte la mejor asesoría. ¡Cotiza todo lo que necesitas!</p>
-                <img src="ejemplo.jpg" alt="Imagen de ejemplo" class="imagen">
+                <img src="ejemplo.jpg" class="imagen">
             </div>
         </div>
-    </main>
+    </section>
 </body>
 </html>
