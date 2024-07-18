@@ -27,11 +27,32 @@ import org.springframework.web.bind.annotation.*;
         
 public class AgendarCitaController {
     @Autowired
-    private CitaService citaservice;
+    private CitasService citaservice;
     
     @PostMapping
-    public 
+    public AgendarCita crearcita(@RequestBody AgendarCita agendarcita){
+        return citaservice.crearcita(agendarcita);
+    }
     
+    @GetMapping("/{idCita}")
+    public AgendarCita getCita(@PathVariable Long idCita) {
+        return citaservice.getCita(idCita);
+        
+    }
+    @PutMapping("/{idCita}")
+    public AgendarCita modificarcita(@PathVariable Long idCita, @RequestBody AgendarCita agendarcita){
+        agendarcita.setidCita( idCita);
+        return citaservice.modificarcita(agendarcita);
+    }
     
+    @DeleteMapping("/{idCita}")
+    public AgendarCita eliminarcita(@PathVariable Long idCita){
+        return citaservice.eliminarcita(idCita);
+    }
+    
+    @GetMapping
+    public List<AgendarCita> getcitastotal(){
+        return citaservice.getcitastotal();
+    }
     
 }

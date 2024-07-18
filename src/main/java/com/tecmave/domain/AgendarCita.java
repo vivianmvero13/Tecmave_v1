@@ -1,7 +1,12 @@
 package com.tecmave.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
 import lombok.Data;
 import java.util.Date;
+import org.springframework.data.annotation.Id;
 
 
 @Data
@@ -17,6 +22,9 @@ public class AgendarCita {
     private String Apellido;
     private Date Fecha;
     private String MotivoCita;
+    
+    
+    public AgendarCita() {}
 
     public AgendarCita(Long idCita, String Nombre, String Apellido, Date Fecha, String MotivoCita) {
         this.idCita = idCita;
@@ -25,6 +33,8 @@ public class AgendarCita {
         this.Fecha = Fecha;
         this.MotivoCita = MotivoCita;
     }
+
+ 
     
     
     

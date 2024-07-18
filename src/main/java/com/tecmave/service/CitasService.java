@@ -1,6 +1,6 @@
 package com.tecmave.service;
 
-import com.tecmave.domain.AgendarCita
+import com.tecmave.domain.AgendarCita;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,25 +14,25 @@ public class CitasService {
     private AgendarCitaDao agendarcitadao;
 
     public AgendarCita crearcita(AgendarCita agendarcita) {
-        return AgendarCitaDao.save(Agendarcita);
+        return agendarcitadao.save(agendarcita);
     }
 
-    public AgendarCita getAgendarCita(int idCita) {
-        return AgendarCitaDao.findById(IdCita).orElse(null);
+    public AgendarCita getCita(Long idCita) {
+        return agendarcitadao.findById(idCita).orElse(null);
 
     }
 
     public AgendarCita modificarcita(AgendarCita agendarcita) {
-        return AgendarCitaDao.save(Agendarcita);
+        return agendarcitadao.save(agendarcita);
 
     }
 
-    public AgendarCita eliminarcita(int idCita) {
-        return AgendarCitaDao.deleteById(IdCita);
+    public AgendarCita eliminarcita(Long idCita) {
+        return agendarcitadao.deleteById(idCita);
     }
 
     
     public List<AgendarCita> getcitastotal() {
-        return AgendarCitaDao.findAll();
+        return agendarcitadao.findAll();
     }
 }
