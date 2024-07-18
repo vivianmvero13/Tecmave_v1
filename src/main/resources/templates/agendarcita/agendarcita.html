@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <title>Agendar Cita</title>
+</head>
+<body>
+    <header th:replace="layout/plantilla :: header"/>
+    <h1>Agendar Cita</h1>
+    <form action="/appointments" method="post">
+        <label for="clientName">Nombre del Cliente:</label>
+        <input type="text" id="clientName" name="clientName" required><br>
+        <label for="appointmentDate">Fecha de la Cita:</label>
+        <input type="date" id="appointmentDate" name="appointmentDate" required><br>
+        <label for="details">Detalles:</label>
+        <textarea id="details" name="details" required></textarea><br>
+        <button type="submit">Agendar</button>
+    </form>
+</body>
 </html>

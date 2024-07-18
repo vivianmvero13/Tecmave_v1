@@ -41,7 +41,7 @@ public class AgendarCitaController {
     }
     @PutMapping("/{idCita}")
     public AgendarCita modificarcita(@PathVariable Long idCita, @RequestBody AgendarCita agendarcita){
-        agendarcita.setidCita( idCita);
+        agendarcita.setIdCita( idCita);
         return citaservice.modificarcita(agendarcita);
     }
     
