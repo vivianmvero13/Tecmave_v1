@@ -1,1 +1,26 @@
+package com.tecmave.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.tecmave.entity.Empleado;
+import com.tecmave.service.EmpleadoService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/empleados")
+public class EmpleadoController {
+    @Autowired
+    private EmpleadoService empleadoService;
+
+    @GetMapping
+    public List<Empleado> getAllEmpleados() {
+        return empleadoService.getAllEmpleados();
+    }
+
+    @PostMapping
+    public Empleado createEmpleado(@RequestBody Empleado empleado) {
+        return empleadoService.saveEmpleado(empleado);
+    }
+}
 
