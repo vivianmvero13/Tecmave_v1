@@ -24,3 +24,9 @@ public class EmpleadoController {
     }
 }
 
+    @PostMapping
+    public Empleado createEmpleado(@RequestBody Empleado empleado) {
+        return empleadoService.saveEmpleado(empleado);
+    }
+}
+
