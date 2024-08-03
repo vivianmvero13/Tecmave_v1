@@ -28,7 +28,7 @@ public class CitasService {
     }
 
     public void eliminarcita(Long idCita) {
-        return agendarcitadao.deleteById(idCita);
+         agendarcitadao.deleteById(idCita);
     }
 
     

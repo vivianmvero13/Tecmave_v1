@@ -20,6 +20,7 @@ import com.tecmave.domain.AgendarCita;
 import com.tecmave.service.CitasService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -46,8 +47,9 @@ public class AgendarCitaController {
     }
     
     @DeleteMapping("/{idCita}")
-    public AgendarCita eliminarcita(@PathVariable Long idCita){
-        return citaservice.eliminarcita(idCita);
+    public ResponseEntity<String> eliminarcita(@PathVariable Long idCita){
+         citaservice.eliminarcita(idCita);
+        return ResponseEntity.ok("Cita eliminada exitosamente");
     }
     
     @GetMapping
