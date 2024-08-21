@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Agendar Cita</title>
+    <style>
+        main {
+            padding: 20px;
+        }
+        
+        .contenedor-formulario {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; 
+        }
+        
+        .columnas, .informacion {
+            flex: 1;
+            margin: 0 10px;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600; 
+        }
+        
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+            font-size: 16px; 
+            transition: border-color 0.3s, box-shadow 0.3s; 
+        }
+        
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus, textarea:focus {
+            border-color: #f53e2d; 
+            box-shadow: 0 0 5px rgba(245, 62, 45, 0.5); 
+            outline: none; 
+        }
+        
+        textarea {
+            height: 80px;
+        }
+        
+        .boton-agendar {
+            background-color: #f53e2d;
+            color: white;
+            padding: 10px 40px; 
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: auto; 
+            display: block; 
+            font-size: 16px;
+        }
+        
+        .boton-agendar:hover {
+            background-color: #ae2d23;
+        }
+        
+        .informacion {
+            text-align: left;
+        }
+        
+        .imagen {
+            max-width: 100%;
+            height: auto;
+            margin-top: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+    <section th:fragment="agendarCita">
+        <div class="contenedor-formulario">
+            <div class="columnas">
+                <label for="nombre">NOMBRE *</label>
+                <input type="text" id="nombre" name="nombre">
+
+                <label for="apellidos">APELLIDOS *</label>
+                <input type="text" id="apellidos" name="apellidos">
+
+                <label for="fecha">FECHA *</label>
+                <input type="date" id="fecha" name="fecha">
+                
+                <label for="motivo">MOTIVO DE LA CITA *</label>
+                <textarea id="motivo" name="motivo"></textarea>
+            </div>
+
+            <div class="informacion">
+                <h1>AGENDA TU CITA</h1>
+                <p>Completa el siguiente formulario para agendar tu cita. Nos pondremos en contacto contigo para confirmar los detalles.</p>
+                <img src="Tallercita.jpg" class="imagen">
+                <button type="submit" class="boton-agendar">Agendar</button>
+            </div>
+        </div>
+         
+        <div class="calendar">
+            <iframe src="https://calendar.google.com/calendar/embed?src=villamarco85%40gmail.com&ctz=America%2FCosta_Rica" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        
+    </section>
+</body>
+</html>
