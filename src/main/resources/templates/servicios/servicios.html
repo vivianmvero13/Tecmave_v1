@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Servicios</title>
+    <style>
+        .servicios {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .servicios h1 {
+            color: #f53e2d; 
+            margin-bottom: 20px;
+        }
+
+        .servicios p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .servicios .imagenes-servicios {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .servicios .imagenes-servicios img {
+            border: 5px solid #f53e2d; 
+            max-width: 30%;
+            height: auto;
+        }
+
+        .servicios .descripcion-servicios {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+    <section th:fragment="servicios" class="servicios">
+        <h1>Nuestros Servicios</h1>
+        <p>Nuestros servicios ayudan a tu carro a tener una vida larga y duradera a la mejor calidad, ya que el material utilizado y los productos son de la mejor calidad.</p>
+        <p>Los servicios que brindamos van desde el mantenimiento preventivo hasta la mecánica rápida ya que tenemos personal especializado para solucionar cualquier problema que tenga su vehículo.</p>
+        <p>A continuación, te presentamos nuestros mejores servicios:</p>
+        <div class="imagenes-servicios">
+            <div class="servicio">
+                <img src="balanceo de llantas.jpg" alt="Cambio de Neumáticos">
+                <p class="descripcion-servicios">Cambio de Llantas</p>
+            </div>
+            <div class="servicio">
+                <img src="cambio de bateria.jpg" alt="Cambio de Batería">
+                <p class="descripcion-servicios">Cambio de Batería</p>
+            </div>
+            <div class="servicio">
+                <img src="cambio aceite motor.png" alt="Cambio de Aceite de Motor">
+                <p class="descripcion-servicios">Cambio de Aceite de Motor</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+

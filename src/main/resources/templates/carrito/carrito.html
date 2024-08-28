@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    header {
+        background-color: #f53e2d;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        height: 50px;
+        margin-right: 20px;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: space-around;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        padding: 10px 15px;
+        font-size: 16px;
+        position: relative;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px;
+    }
+
+    nav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    nav a.activo::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        border-radius: 5px;
+    }
+
+    .icono-usuario {
+        height: 30px;
+        margin-left: auto;
+    }
+
+    main {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: #f4f4f4;
+    }
+
+    .carrito {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .columna-izquierda, .columna-derecha {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.5rem;
+        color: #000;
+    }
+
+    .producto-carrito, .info-producto, .control-cantidad, .resumen p {
+        border-bottom: 1px solid #000;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .producto-carrito img {
+        width: 80px;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .precio, .precio-sin-impuesto, .control-cantidad p {
+        text-align: right;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .info-producto {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .control-cantidad {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .control-cantidad span {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+    }
+
+    .eliminar-producto {
+        background-color: #f53e2d;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .eliminar-producto:hover {
+        background-color: #a73227;
+        transform: translateY(-2px);
+    }
+
+    .actualizar-carrito, .proceder-pago {
+        background-color: #f53e2d;
+        color: white;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        width: 100%;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .actualizar-carrito:hover, .proceder-pago:hover {
+        background-color: #a73227;
+        transform: translateY(-2px);
+    }
+
+    .resumen {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .resumen p {
+        margin: 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .resumen p span {
+        text-align: right;
+        min-width: 100px;
+    }
+</style>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+        <section th:fragment="carrito">
+            <div class="columna-izquierda">
+                <div class="producto-carrito">
+                    <h2>Carrito de compras</h2>
+                    <p>LIQUI MOLY 9978 MOLYGEN ACEITE ANTIFRICCIÓN PARA MOTORES GASOLINA 10W30 SL</p>
+                    
+                    <div class="info-producto">
+                        <img src="liqui.jpeg" alt="LIQUI MOLY 1L">
+                        <p>Código: 527082</p>
+                        <button class="eliminar-producto">X</button>
+                    </div>
+                    <div class="control-cantidad">
+                        <span>1</span>
+                        <button>+</button>
+                        <p>Subtotal: ₡ 39,934.20</p>
+                        <p>Impuestos NO incl: ₡ 35,340.00</p>
+                    </div>
+                    <button class="actualizar-carrito">Actualizar carrito</button>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <h2>Resumen de compra</h2>
+                <div class="resumen">
+                    <p>Subtotal: <span>₡ 35,340.00</span></p>
+                    <p>Total con IVA: <span>₡ 39,934.20</span></p>
+                    <p>IVA: <span>₡ 4,594.20</span></p>
+                    <p>Total: <span>₡ 39,934.20</span></p>
+                    <button class="proceder-pago">Proceder al pago</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

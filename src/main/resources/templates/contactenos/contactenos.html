@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Contáctenos</title>
+    <style>
+        .contacto {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .informacion-contacto {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .informacion-contacto h1 {
+            color: #f53e2d; /* Anaranjado */
+        }
+
+        .informacion-contacto p {
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+
+        .informacion-contacto img {
+            margin-right: 10px;
+        }
+
+        .imagenes-contacto {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .imagenes-contacto img {
+            max-width: 45%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+    <section th:fragment="contactenos">
+        <div class="contacto">
+            <div class="informacion-contacto">
+                <h1>CONTACTO</h1>
+                <p>
+                    <a href="https://wa.me/50684092476" target="_blank">
+                        <img src="whatsapp Icon photo.png" alt="WhatsApp"> +506 8409-2476
+                    </a>
+                </p>
+                <p>
+                     <img src="phone Icon Photo.png" alt="Teléfono"> +506 2245-2901
+                </p>
+                <p>
+                    <img src="gmail icon.png" alt="Correo"> tecmave.jeepgarage@gmail.com
+                </p>
+            </div>
+            <div class="imagenes-contacto">
+                <img src="tecmave1.jpg" alt="Imagen 1">
+                <img src="tecmave2.jpg" alt="Imagen 2">
+                <img src="tecmave3.jpg" alt="Imagen 3">
+                <img src="tecmave4.jpg" alt="Imagen 4">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
