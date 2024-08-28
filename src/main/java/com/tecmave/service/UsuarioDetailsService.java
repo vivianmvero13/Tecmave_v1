@@ -1,7 +1,9 @@
 package com.tecmave.service;
 
-import org.beangle.security.authc.UsernameNotFoundException;
-import org.joyqueue.security.UserDetails;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+
 
 
 
