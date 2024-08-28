@@ -1,7 +1,7 @@
 package com.tecmave.service;
-
 import com.tecmave.domain.Producto;
 import java.util.List;
+
 
 public interface ProductoService {
     //Se obtiene un listado de productos en un List

@@ -1,19 +1,25 @@
 package com.tecmave.service.impl;
 
 import com.tecmave.dao.ProductoDao;
-import com.tecmave.domain.Producto;
-import com.tecmave.service.ProductoService;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
-public class ProductoServiceImpl implements ProductoService {
+import com.tecmave.service.ProductoService;
+import java.util.List; 
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.stereotype.Service; 
+import org.springframework.transaction.annotation.Transactional;
+import com.tecmave.domain.Producto;
+
+@Service
+public class ProductoServiceImpl implements ProductoService{
     @Autowired
     private ProductoDao productoDao;
     @Override
     @Transactional(readOnly=true)
     public List<Producto> getProductos(boolean activos){
         var lista=productoDao.findAll();
+        if (activos) {
+           lista.removeIf(e -> !e.isActivo());
+        }
         return lista;
     }
     @Override
