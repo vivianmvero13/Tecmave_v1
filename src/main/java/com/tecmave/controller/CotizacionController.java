@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.tecmave.service.EmailService;
 import jakarta.mail.MessagingException;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-@RequestMapping("/cotizacion")
+@RequestMapping("/cotizar")
 public class CotizacionController {
      
     @Autowired
     private EmailService emailService;
     @PostMapping("/enviar")
-    public String enviarCotizacion(
+    public void enviarCotizacion(
         @RequestParam("nombre") String nombre,
         @RequestParam("placa") String placa,
         @RequestParam("apellidos") String apellidos,
@@ -51,7 +52,11 @@ public class CotizacionController {
                 + "</div>"
                 + "</body></html>";
         emailService.sendHtmlEmail(correo, "NUEVA COTIZACIÓN ID:"+placa,cuerpoHTML);
-        return "index";
+    }
+    
+    @GetMapping("/listado")
+    public String inicio() {                 
+        return "/cotizar/listado";     
     }
     
     

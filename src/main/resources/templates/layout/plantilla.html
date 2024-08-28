@@ -1,67 +1,97 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="head">
-        <title>TechShop</title>         
-        <meta charset="UTF-8"/>         
-        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>         
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>        
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>         
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>         
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>  
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Cotización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+/* Estilos para el logo */
+.logo {
+    max-height: 80px; /* Tamaño más pequeño del logo */
+    width: auto; /* Mantiene la proporción del logo */
+}
+
+/* Estilos para el navbar */
+.navbar {
+    background-color: #dc3545 !important; /* Asegura el color rojo */
+    border-bottom: 2px solid #ffffff; /* Línea debajo de la barra de navegación */
+    padding: 20px 20px; /* Aumenta el padding para hacer el navbar más grande */
+    height: 80px; /* Aumenta la altura total del navbar */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center; /* Centra el logo verticalmente en el navbar */
+    height: 100%; /* Asegura que el logo ocupe toda la altura disponible del navbar */
+}
+
+.nav-link {
+    font-size: 1.2rem; /* Letras más grandes */
+    color: #ffffff !important; /* Letras blancas */
+    transition: color 0.3s;
+    padding: 10px 15px; /* Aumenta el padding alrededor de los enlaces para ocupar más espacio */
+}
+
+.nav-link:hover {
+    color: #ffcc00 !important; /* Color de enlace al pasar el ratón */
+}
+
+/* Estilos para la sección principal */
+#main-header {
+    background: linear-gradient(to right, #dc3545, #c82333); /* Degradado rojo en la cabecera */
+    padding: 20px 0;
+}
+
+#main-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+        </style>
     </head>
     <body>
-        <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-                <div class="container">
-                    <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
-                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <ul class="navbar-nav">                             
-                            <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>                             
-                            <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>    
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" 
-                                   data-bs-toggle="dropdown" 
-                                   href="#" 
-                                   role="button" 
-                                   aria-expanded="false">[[#{plantilla.pruebas}]]</a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item"  th:href="@{/pruebas/listado}">[[#{plantilla.asociaciones}]]</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/pruebas/listado2}">[[#{plantilla.consultas}]]</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>                         
-                        </ul>                         
-                        <div class="col-md-3">                             
-                            <ul class="navbar-nav">                                                                 
-                                <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>                                 
-                                <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>                             
-                            </ul> 
-                        </div>
-                    </div>  
-                </div>  
-            </nav>
-            <section id="main-header" class="py-2 bg-success text-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1><i class="fas fa-cog"></i> [[#{plantilla.suTienda}]]</h1>
-                        </div>
+    <header th:fragment="header" class="header">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-danger p-0"> <!-- Cambiado a bg-danger para el color rojo -->
+            <div class="container">
+                <!-- Logo en el lugar del texto de la marca -->
+                <a th:href="@{/}" class="navbar-brand">
+                    <img src="/logo.png" class="logo"> <!-- Usamos el logo como enlace de la marca -->
+                </a>
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
+                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
+                        <li class="nav-item px-2"><a href="#">[[#{plantilla.contactanos}]]</a></li>
+                        <li class="nav-item px-2"><a href="#">[[#{plantilla.servicios}]]</a></li>
+                        <li class="nav-item px-2"><a href="#">[[#{plantilla.nosotros}]]</a></li>
+                        <li class="nav-item px-2"><a href="#">[[#{plantilla.cita}]]</a></li>
+                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/cotizar/listado}">[[#{plantilla.cotizar}]]</a></li>
+                        <li class="nav-item px-2"><a href="#">[[#{plantilla.ubicacion}]]</a></li>
+                        <li class="nav-item px-2"><a href="#">[[#{plantilla.promociones}]]</a></li>
+                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
+                    </ul>
+                    <div class="col-md-3">
+                        <ul class="navbar-nav">
+                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>
+                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-        </header>
-        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
-            <div class="container">
-                <div class="col">
-                    <p class="lead text-center">
-                        &COPY[[#{plantilla.derechos}]]
-                    </p>
-                </div>
             </div>
-        </footer>
+        </nav>
+    </header>
+        <footer th:fragment="footer" class="bg-dark text-white mt-5 p-2">
+        <div class="container">
+            <div class="col">
+                <p class="lead text-center">
+                    &COPY[[#{plantilla.derechos}]]
+                </p>
+            </div>
+        </div>
+    </footer>
     </body>
 </html>

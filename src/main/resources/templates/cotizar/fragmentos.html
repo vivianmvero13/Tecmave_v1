@@ -1,0 +1,189 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Tecmave</title>
+        <style>
+            body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f53e2d;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding: 10px 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.logo {
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-around; 
+ 
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 16px;
+    position: relative;
+    flex: 1; 
+    text-align: center;
+}
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+nav a.activo::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.flecha {
+    font-size: 20px;
+}
+
+.icono-usuario {
+    height: 30px;
+    margin-left: auto;
+}
+
+main {
+    padding: 20px;
+}
+
+.contenedor-formulario {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+.columnas, .informacion {
+    flex: 1;
+    margin: 0 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600; 
+}
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    font-size: 16px; 
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+    border-color: #f53e2d; 
+    box-shadow: 0 0 5px rgba(245, 62, 45, 0.5); 
+    outline: none; 
+}
+
+
+textarea {
+    height: 80px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.boton-cotizar {
+    background-color: #f53e2d;
+    color: white;
+    padding: 10px 40px; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto; 
+    display: block; 
+    font-size: 16px;
+}
+
+.boton-cotizar:hover {
+    background-color: #ae2d23;
+}
+
+.informacion {
+    text-align: left;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+h1{
+    text-align: center;
+}
+            </style>
+    </head>
+    <body>
+        <section th:fragment="formulario" class="py-4 mb-4 bg-light">
+            <div class="contenedor-formulario">
+            <div class="columnas">
+                <label for="nombre">NOMBRE *</label>
+                <input type="text" id="nombre" name="nombre">
+                
+                <label for="apellidos">APELLIDOS *</label>
+                <input type="text" id="apellidos" name="apellidos">
+                
+                <label for="correo">CORREO ELECTRÓNICO *</label>
+                <input type="email" id="correo" name="correo">
+                
+                <label for="telefono">TELÉFONO *</label>
+                <input type="tel" id="telefono" name="telefono">
+                
+                <label for="descripcion">DESCRIPCIÓN DEL PRBLEMA *</label>
+                <textarea id="descripcion" name="descripcion"></textarea>
+            </div>
+
+            <div class="columnas">
+                <label for="marca">MARCA DEL VEHÍCULO *</label>
+                <input type="text" id="marca" name="marca">
+                
+                <label for="modelo">MODELO DEL VEHÍCULO *</label>
+                <input type="text" id="modelo" name="modelo">
+                
+                <label for="anio">AÑO DEL VEHÍCULO *</label>
+                <input type="text" id="anio" name="anio">
+                
+                <label for="imagen">ADJUNTAR IMÁGEN *</label>
+                <input type="file" id="imagen" name="imagen">
+                <br><br><br><br><br><br>
+                <button type="submit" class="boton-cotizar">Cotizar</button>
+            </div>
+        </section>
+        <section th:fragment="informacion" class="py-4 mb-4 bg-light">
+            <div class="informacion">
+                <h1>COTIZA AQUI</h1>
+                <p>Completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible. Nuestros expertos están listos para ofrecerte la mejor asesoría. ¡Cotiza todo lo que necesitas!</p>
+                <img src="ejemplo.jpg" alt="Imagen de ejemplo" class="imagen">
+            </div>
+        </section>
+    </body>
+</html>
