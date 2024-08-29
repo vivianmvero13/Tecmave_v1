@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - Tecmave</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .main-content {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .main-content h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+
+    <div class="container">
+        <div class="main-content">
+            <h2>¿Quiénes Somos?</h2>
+            <p>En Tecmave somos un centro de revisión y reparación automotriz totalmente a su servicio, en el cual nos especializamos en Jeep, pero estamos preparados para cualquier arreglo que su vehículo necesite. Contamos con un amplio personal con gran conocimiento sobre el tema de autos, y estarán a su disposición con su mejor actitud para lo que necesite.</p>
+        </div>
+    </div>
+</body>
+</html>

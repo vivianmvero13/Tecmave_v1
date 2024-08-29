@@ -143,46 +143,44 @@ h1{
             </style>
     </head>
     <body>
-        <form method="POST" th:action="@{/cotizar/enviarCotizacion}" th:object="${cotizacion}" class="was-validated" enctype="multipart/form-data">
-            <section th:fragment="formulario" class="py-4 mb-4 bg-light">
-                <div class="contenedor-formulario">
+        <section th:fragment="formulario" class="py-4 mb-4 bg-light">
+            <form method="POST" action="@{/cotizar/enviarCotizacion}" object="${cotizacion}" class="was-validated" enctype="multipart/form-data">
+            <div class="contenedor-formulario">
                 <div class="columnas">
                     <label for="nombre">NOMBRE *</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
-
+                    <input type="text" class="form-control" name="nombre" required="true"/>
+                    
                     <label for="apellidos">APELLIDOS *</label>
-                    <input type="text" class="form-control" id="apellidos" name="apellidos" th:field="*{apellidos}" required="true">
+                    <input type="text" class="form-control" name="apellidos" required="true"/>
 
                     <label for="correo">CORREO ELECTRÓNICO *</label>
-                    <input type="email"  class="form-control" id="correo" name="correo" th:field="*{correo}" required="true"/>
+                    <input type="email" class="form-control" name="correo" required="true"/>
 
                     <label for="telefono">TELÉFONO *</label>
-                    <input type="tel"  class="form-control" id="telefono" name="telefono" th:field="*{telefono}" required="true"/>
+                    <input type="tel" class="form-control" name="telefono" required="true"/>
 
                     <label for="descripcion">DESCRIPCIÓN DEL PRBLEMA *</label>
-                    <textarea id="descripcion"  class="form-control" name="descripcion" th:field="*{descripcion}" required="true"/></textarea>
+                    <textarea type="tel" class="form-control" name="descripcion" required="true"></textarea>
                 </div>
 
                 <div class="columnas">
                     <label for="marca">MARCA DEL VEHÍCULO *</label>
-                    <input type="text"  class="form-control" id="marca" name="marca" th:field="*{marca}" required="true"/>
+                    <input type="text" class="form-control" name="marca" required="true"/>
 
                     <label for="modelo">MODELO DEL VEHÍCULO *</label>
-                    <input type="text"  class="form-control" id="modelo" name="modelo" th:field="*{modelo}" required="true"/>
+                    <input type="text" class="form-control" name="modelo" required="true"/>
 
                     <label for="anio">AÑO DEL VEHÍCULO *</label>
-                    <input type="text"  class="form-control" id="anio" name="anio" th:field="*{anio}" required="true"/>
+                    <input type="text" class="form-control" name="anio" required="true"/>
                     <br><br><br><br><br><br>
                     <button type="submit" class="boton-cotizar">Cotizar</button>
                 </div>
-            </section>
-            <section th:fragment="informacion" class="py-4 mb-4 bg-light">
                 <div class="informacion">
                     <h1>COTIZA AQUI</h1>
                     <p>Completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible. Nuestros expertos están listos para ofrecerte la mejor asesoría. ¡Cotiza todo lo que necesitas!</p>
-                    <img src="ejemplo.jpg" alt="Imagen de ejemplo" class="imagen">
-                </div>
-            </section>
+                    <img src="../../static/ejemplo.jpg" alt=""/>
+                </div>      
         </form>
+        </section>
     </body>
 </html>
