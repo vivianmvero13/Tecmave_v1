@@ -147,37 +147,37 @@ h1{
             <form method="POST" action="@{/cotizar/enviarCotizacion}" object="${cotizacion}" class="was-validated" enctype="multipart/form-data">
             <div class="contenedor-formulario">
                 <div class="columnas">
-                    <label for="nombre">NOMBRE *</label>
+                    <label for="nombre">[[#{cotizar.nombre}]]</label>
                     <input type="text" class="form-control" name="nombre" required="true"/>
                     
-                    <label for="apellidos">APELLIDOS *</label>
+                    <label for="apellidos">[[#{cotizar.apellidos}]]</label>
                     <input type="text" class="form-control" name="apellidos" required="true"/>
 
-                    <label for="correo">CORREO ELECTRÓNICO *</label>
+                    <label for="correo">[[#{cotizar.correo}]]</label>
                     <input type="email" class="form-control" name="correo" required="true"/>
 
-                    <label for="telefono">TELÉFONO *</label>
+                    <label for="telefono">[[#{cotizar.telefono}]]</label>
                     <input type="tel" class="form-control" name="telefono" required="true"/>
 
-                    <label for="descripcion">DESCRIPCIÓN DEL PRBLEMA *</label>
+                    <label for="descripcion">[[#{cotizar.desc}]]</label>
                     <textarea type="tel" class="form-control" name="descripcion" required="true"></textarea>
                 </div>
 
                 <div class="columnas">
-                    <label for="marca">MARCA DEL VEHÍCULO *</label>
+                    <label for="marca">[[#{cotizar.marca}]]</label>
                     <input type="text" class="form-control" name="marca" required="true"/>
 
-                    <label for="modelo">MODELO DEL VEHÍCULO *</label>
+                    <label for="modelo">[[#{cotizar.modelo}]]</label>
                     <input type="text" class="form-control" name="modelo" required="true"/>
 
-                    <label for="anio">AÑO DEL VEHÍCULO *</label>
+                    <label for="anio">[[#{cotizar.anio}]]</label>
                     <input type="text" class="form-control" name="anio" required="true"/>
                     <br><br><br><br><br><br>
                     <button type="submit" class="boton-cotizar">Cotizar</button>
                 </div>
                 <div class="informacion">
-                    <h1>COTIZA AQUI</h1>
-                    <p>Completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible. Nuestros expertos están listos para ofrecerte la mejor asesoría. ¡Cotiza todo lo que necesitas!</p>
+                    <h1>[[#{cotiza.aqui}]]</h1>
+                    <p>[[#{cotiza.parrafo}]]</p>
                     <img src="../../static/ejemplo.jpg" alt=""/>
                 </div>      
         </form>
