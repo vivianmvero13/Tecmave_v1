@@ -145,7 +145,13 @@ h1{
     <body>
         <section th:fragment="formulario" class="py-4 mb-4 bg-light">
             <form method="POST" action="@{/cotizar/enviarCotizacion}" object="${cotizacion}" class="was-validated" enctype="multipart/form-data">
-            <div class="contenedor-formulario">
+            <div class="informacion">
+                    <h1>[[#{cotiza.aqui}]]</h1>
+                    <p>[[#{cotiza.parrafo}]]</p>
+                    <img src="../../static/ejemplo.jpg" alt=""/>
+                </div>   
+                
+                <div class="contenedor-formulario">
                 <div class="columnas">
                     <label for="nombre">[[#{cotizar.nombre}]]</label>
                     <input type="text" class="form-control" name="nombre" required="true"/>
@@ -173,13 +179,9 @@ h1{
                     <label for="anio">[[#{cotizar.anio}]]</label>
                     <input type="text" class="form-control" name="anio" required="true"/>
                     <br><br><br><br><br><br>
-                    <button type="submit" class="boton-cotizar">Cotizar</button>
+                    <button type="submit" class="boton-cotizar">[[#{plantilla.cotizar}]]</button>
                 </div>
-                <div class="informacion">
-                    <h1>[[#{cotiza.aqui}]]</h1>
-                    <p>[[#{cotiza.parrafo}]]</p>
-                    <img src="../../static/ejemplo.jpg" alt=""/>
-                </div>      
+                   
         </form>
         </section>
     </body>
