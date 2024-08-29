@@ -2,17 +2,16 @@ package com.tecmave.controller;
 
 
 import com.tecmave.domain.Cotizacion;
-import com.tecmave.service.CategoriaService;
 import com.tecmave.service.CotizarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.mail.MessagingException;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 
 
 @Controller
@@ -22,14 +21,17 @@ public class CotizacionController {
     private CotizarService cotizarService;
     
     @PostMapping("/enviarCotizacion")
-    public String enviarCotizacion(Model model, Cotizacion cotizacion)
-            throws MessagingException {
-        model = cotizarService.crearCotizacion(model, cotizacion);
-        return "redirect:/cotizar/listado"; // Usa redirect para redirigir después del POST
+    public String enviarCotizacion(@ModelAttribute Cotizacion cotizacion, Model model) throws MessagingException {
+
+        cotizarService.crearCotizacion(cotizacion); // Procesa la cotización y envía el correo
+
+        // Redirige a la vista del listado después de procesar la cotización
+        return "redirect:/cotizar/listado";
     }
     
     @GetMapping("/listado")
-    public String inicio() {
+    public String inicio(Model model) {
+        model.addAttribute("cotizacion", new Cotizacion());
         return "cotizar/listado";
     }
     
