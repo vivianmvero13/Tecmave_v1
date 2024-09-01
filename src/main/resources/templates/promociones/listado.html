@@ -1,15 +1,169 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Productos</title>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Promociones</title>
+        <style>
+             /* Estilos para el logo */
+                .logo {
+                    max-height: 80px; /* Tamaño más pequeño del logo */
+                    width: auto; /* Mantiene la proporción del logo */
+                }
+
+                /* Estilos para el navbar */
+                .navbar {
+                    background-color: #dc3545 !important; /* Asegura el color rojo */
+                    border-bottom: 2px solid #ffffff; /* Línea debajo de la barra de navegación */
+                    padding: 20px 20px; /* Aumenta el padding para hacer el navbar más grande */
+                    height: 80px; /* Aumenta la altura total del navbar */
+                }
+
+                .navbar-brand {
+                    display: flex;
+                    align-items: center; /* Centra el logo verticalmente en el navbar */
+                    height: 100%; /* Asegura que el logo ocupe toda la altura disponible del navbar */
+                }
+
+                .nav-link {
+                    font-size: 1.2rem; /* Letras más grandes */
+                    color: #ffffff !important; /* Letras blancas */
+                    transition: color 0.3s;
+                    padding: 10px 15px; /* Aumenta el padding alrededor de los enlaces para ocupar más espacio */
+                }
+
+                .nav-link:hover {
+                    color: #ffcc00 !important; /* Color de enlace al pasar el ratón */
+                }
+
+                /* Estilos para la sección principal */
+                #main-header {
+                    background: linear-gradient(to right, #dc3545, #c82333); /* Degradado rojo en la cabecera */
+                    padding: 20px 0;
+                }
+
+                #main-header h1 {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+
+                body {
+                    font-family: 'Source Sans Pro', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f4f4f4;
+                    color: #333;
+                }
+
+                .contenedor-carrusel {
+                    width: 80%;
+                    max-width: 1000px;
+                    margin: 50px auto;
+                    text-align: center;
+                    overflow: hidden; /* Ocultar el contenido fuera del área visible */
+                }
+
+                h2 {
+                    margin-bottom: 20px;
+                }
+
+                .carrusel {
+                    display: flex;
+                    transition: transform 0.5s ease;
+                }
+
+                .item-carrusel {
+                    min-width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .item-carrusel img {
+                    width: 40%;
+                    height: auto;
+                    object-fit: cover;
+                }
+
+                .texto-carrusel {
+                    width: 55%;
+                    padding: 20px;
+                    text-align: left;
+                }
+
+                .texto-carrusel h3 {
+                    color: #f53e2d;
+                    font-size: 28px; /* Agrandado el tamaño de la fuente */
+                    margin: 0;
+                }
+
+                .texto-carrusel h4 {
+                    color: orange;
+                    font-size: 20px;
+                    margin: 10px 0;
+                }
+
+                .texto-carrusel p {
+                    font-size: 16px;
+                    color: #333;
+                }
+
+                .indicadores-carrusel {
+                    text-align: center;
+                }
+
+                .indicador {
+                    height: 10px;
+                    width: 10px;
+                    margin: 0 5px;
+                    background-color: #bbb;
+                    border-radius: 50%;
+                    display: inline-block;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+
+                .indicador.activo {
+                    background-color: #f53e2d;
+                }
+                .logo-container {
+                        position: absolute;
+                        left: 0;
+                        margin-left: 15px; /* Ajusta el valor según sea necesario */
+                 }
+            </style>
+        <script>
+            let diapositivaActual = 0;
+
+            function mostrarDiapositiva(indice) {
+                const carrusel = document.querySelector('.carrusel');
+                const indicadores = document.querySelectorAll('.indicador');
+
+                // Mover el carrusel para mostrar la diapositiva seleccionada
+                carrusel.style.transform = `translateX(-${indice * 100}%)`;
+
+                // Actualizar el índice de la diapositiva actual
+                diapositivaActual = indice;
+
+                // Actualizar los indicadores
+                indicadores.forEach(indicador => indicador.classList.remove('activo'));
+                indicadores[diapositivaActual].classList.add('activo');
+            }
+
+            // Transición automática de diapositivas cada 5 segundos
+            setInterval(() => {
+                diapositivaActual = (diapositivaActual + 1) % 3;
+                mostrarDiapositiva(diapositivaActual);
+            }, 5000);
+        </script>
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <section th:replace="~{promociones/fragmentos :: carrusel}"/>
+        <section th:replace="~{promociones/fragmentos :: promociones}"/>
 
-        <footer th:replace="~{layout/plantilla :: footer}"/>      
+        <footer th:replace="~{layout/plantilla :: footer}"/>   
+
       
     </body>
 </html>

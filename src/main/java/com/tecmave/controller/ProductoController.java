@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @RequestMapping("/producto")
 public class ProductoController {
-    
+     
     @Autowired
     private ProductoService productoService;
     

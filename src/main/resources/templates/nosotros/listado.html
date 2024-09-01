@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Nosotros</title>
+        <style>
+            .container {
+                width: 80%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .main-content {
+                padding: 20px;
+                background: #fff;
+                margin-top: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .main-content h2 {
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section th:replace="~{nosotros/fragmentos :: informacion}"/>
+        <footer th:replace="~{layout/plantilla :: footer}"/>      
+    </body>
+</html>

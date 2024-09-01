@@ -1,64 +1,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecmave</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tecmave</title>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>         
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>        
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>         
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>         
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>  
-        <style>
-/* Estilos para el logo */
-.logo {
-    max-height: 80px; /* Tamaño más pequeño del logo */
-    width: auto; /* Mantiene la proporción del logo */
-}
+            <style>
+                /* Estilos para el logo */
+                .logo {
+                    max-height: 80px; /* Tamaño más pequeño del logo */
+                    width: auto; /* Mantiene la proporción del logo */
+                }
 
-/* Estilos para el navbar */
-.navbar {
-    background-color: #dc3545 !important; /* Asegura el color rojo */
-    border-bottom: 2px solid #ffffff; /* Línea debajo de la barra de navegación */
-    padding: 20px 20px; /* Aumenta el padding para hacer el navbar más grande */
-    height: 80px; /* Aumenta la altura total del navbar */
-}
+                /* Estilos para el navbar */
+                .navbar {
+                    background-color: #dc3545 !important; /* Asegura el color rojo */
+                    border-bottom: 2px solid #ffffff; /* Línea debajo de la barra de navegación */
+                    padding: 20px 20px; /* Aumenta el padding para hacer el navbar más grande */
+                    height: 80px; /* Aumenta la altura total del navbar */
+                }
 
-.navbar-brand {
-    display: flex;
-    align-items: center; /* Centra el logo verticalmente en el navbar */
-    height: 100%; /* Asegura que el logo ocupe toda la altura disponible del navbar */
-}
+                .navbar-brand {
+                    display: flex;
+                    align-items: center; /* Centra el logo verticalmente en el navbar */
+                    height: 100%; /* Asegura que el logo ocupe toda la altura disponible del navbar */
+                }
 
-.nav-link {
-    font-size: 1.2rem; /* Letras más grandes */
-    color: #ffffff !important; /* Letras blancas */
-    transition: color 0.3s;
-    padding: 10px 15px; /* Aumenta el padding alrededor de los enlaces para ocupar más espacio */
-}
+                .nav-link {
+                    font-size: 1.2rem; /* Letras más grandes */
+                    color: #ffffff !important; /* Letras blancas */
+                    transition: color 0.3s;
+                    padding: 10px 15px; /* Aumenta el padding alrededor de los enlaces para ocupar más espacio */
+                }
 
-.nav-link:hover {
-    color: #ffcc00 !important; /* Color de enlace al pasar el ratón */
-}
+                .nav-link:hover {
+                    color: #ffcc00 !important; /* Color de enlace al pasar el ratón */
+                }
 
-/* Estilos para la sección principal */
-#main-header {
-    background: linear-gradient(to right, #dc3545, #c82333); /* Degradado rojo en la cabecera */
-    padding: 20px 0;
-}
+                /* Estilos para la sección principal */
+                #main-header {
+                    background: linear-gradient(to right, #dc3545, #c82333); /* Degradado rojo en la cabecera */
+                    padding: 20px 0;
+                }
 
-#main-header h1 {
-    font-size: 2rem;
-    font-weight: bold;
-}
-        </style>
+                #main-header h1 {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+                .logo-container {
+                        position: absolute;
+                        left: 0;
+                        margin-left: 15px; /* Ajusta el valor según sea necesario */
+                 }
+            </style>
     </head>
     <body>
     <header th:fragment="header" class="header">
         <nav class="navbar navbar-expand-sm navbar-dark bg-danger p-0"> <!-- Cambiado a bg-danger para el color rojo -->
             <div class="container">
                 <!-- Logo en el lugar del texto de la marca -->
-                <a th:href="@{/}" class="navbar-brand">
+                <a th:href="@{/}" class="navbar-brand logo-container">
                     <img src="/logo.png" class="logo"> <!-- Usamos el logo como enlace de la marca -->
                 </a>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -70,12 +77,12 @@
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
                         <li class="nav-item px-2"><a href="#">[[#{plantilla.contactanos}]]</a></li>
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/servicios/listado}">[[#{plantilla.servicios}]]</a></li>
-                        <li class="nav-item px-2"><a class="nav-link" th:href="@{/nosotros/nosotros}">[[#{plantilla.nosotros}]]</a></li>
+                        <li class="nav-item px-2"><a class="nav-link" th:href="@{/nosotros/listado}">[[#{plantilla.nosotros}]]</a></li>
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/cotizar/listado}">[[#{plantilla.cotizar}]]</a></li>
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/ubicacion/listado}">[[#{plantilla.ubicacion}]]</a></li>
-                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/carrito/items}">[[#{plantilla.comprar}]]</a></li> 
+                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/comprar/listado}">[[#{plantilla.comprar}]]</a></li> 
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/carrito/listado}">[[#{plantilla.carrito}]]</a></li> 
-                        <li class="nav-item px-2"><a href="#">[[#{plantilla.promociones}]]</a></li>
+                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/promociones/listado}">[[#{plantilla.promociones}]]</a></li>
                     </ul>
                     <div class="col-md-3">
                         <ul class="navbar-nav">

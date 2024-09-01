@@ -1,70 +1,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/plantilla :: head}">
-        <title>Tecmave</title>
-        <meta charset="UTF-8"/>
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Promociones</title>
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}" />
-        <h1 style="text-align: center">Sobre nosotros</h1>
-        <section>
-    <div class="carousel">
-        <div class="carousel-slide">
-            <img src="../../static/retalCar.jpeg" alt=""/>
-            <div class="carousel-content">
-                <h2>¿Necesitas un auto sustituto mientras reparamos el tuyo?</h2>
-                <p>INNOVACIÓN TECMAVE X Enterprise Rent-a-Car<br>Te conseguimos el mejor precio</p>
+        <section th:fragment="promociones" class="py-4 mb-4 bg-light">
+            <div class="contenedor-carrusel">
+                <h2>PROMOCIONES</h2>
+                <div class="carrusel">
+                    <div class="item-carrusel">
+                        <img src="/imagencarrusel1.jpeg">
+                        <div class="texto-carrusel">
+                            <h3>¿Necesitas un auto sustituto mientras reparamos el tuyo?</h3>
+                            <h4>INNOVACIÓN TECMAVE X Enterprise Rent-a-Car</h4>
+                            <p>Te conseguimos el mejor precio.</p>
+                        </div>
+                    </div>
+                    <div class="item-carrusel">
+                        <img src="/imagencarrusel2.jpeg">
+                        <div class="texto-carrusel">
+                            <h3>Obtén un escaneo de motor completamente gratis</h3>
+                            <h4>INNOVACIÓN TECMAVE</h4>
+                            <p>Solamente debes seguirnos en Facebook.</p>
+                        </div>
+                    </div>
+                    <div class="item-carrusel">
+                        <img src="/imagencarrusel3.jpeg">
+                        <div class="texto-carrusel">
+                            <h3>Te regalamos un análisis de gases para que pases Dekra</h3>
+                            <h4>INNOVACIÓN TECMAVE</h4>
+                            <p>Promoción válida por la compra de un escaneo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="indicadores-carrusel">
+                    <span class="indicador activo" onclick="mostrarDiapositiva(0)"></span>
+                    <span class="indicador" onclick="mostrarDiapositiva(1)"></span>
+                    <span class="indicador" onclick="mostrarDiapositiva(2)"></span>
+                </div>
             </div>
-        </div>
-        <div class="carousel-slide">
-            <img src="../../static/escaneoEstandar.jpeg" alt=""/>
-            <div class="carousel-content">
-                <h2>Obtén un escaneo de motor completamente gratis</h2>
-                <p>INNOVACIÓN TECMAVE<br>Solamente debes seguirnos en Facebook</p>
-            </div>
-        </div>
-        <div class="carousel-slide">
-            <img src="../../static/fugaGases.jpeg" alt=""/>
-            <div class="carousel-content">
-                <h2>Te regalamos un análisis de gases para que pases Dekra</h2>
-                <p>INNOVACIÓN TECMAVE<br>Promoción válida por la compra de un escaneo</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="carousel-indicators">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <script>
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.carousel-indicators span');
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            slides[currentIndex].style.display = 'none';
-            indicators[currentIndex].classList.remove('active');
-            currentIndex = index;
-            slides[currentIndex].style.display = 'flex';
-            indicators[currentIndex].classList.add('active');
-        }
-
-        function initCarousel() {
-            slides.forEach((slide, index) => {
-                slide.style.display = index === 0 ? 'flex' : 'none';
-            });
-        }
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        initCarousel();
-    </script>
-</section>
-</body>
+        
+    </body>
 </html>
