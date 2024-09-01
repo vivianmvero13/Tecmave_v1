@@ -18,15 +18,8 @@ public class CarritoController {
     private ItemService itemService;
     @Autowired
     private ProductoService productoService;
-
-    @GetMapping("/")
-    private String listado(Model model) {
-        var productos = productoService.getProductos(false);
-        model.addAttribute("productos", productos);
-        return "/index";
-    }
+    
     //Para ver el carrito
-
     @GetMapping("/carrito/listado")
     public String inicio(Model model) {
         var items = itemService.gets();
@@ -35,11 +28,11 @@ public class CarritoController {
         for (Item i : items) {
             carritoTotalVenta += (i.getCantidad() * i.getPrecio());
         }
-        model.addAttribute("carritoTotal",
+        model.addAttribute("carritoTotal", 
                 carritoTotalVenta);
         return "/carrito/listado";
-    }
-
+    }    
+   
     //Para Agregar un producto al carrito
     @GetMapping("/carrito/agregar/{idProducto}")
     public ModelAndView agregarItem(Model model, Item item) {
@@ -61,34 +54,35 @@ public class CarritoController {
         model.addAttribute("carritoTotal", carritoTotalVenta);
         return new ModelAndView("/carrito/fragmentos :: verCarrito");
     }
-    //Para mofificar un producto del carrito
 
+    //Para mofificar un producto del carrito
     @GetMapping("/carrito/modificar/{idProducto}")
     public String modificarItem(Item item, Model model) {
         item = itemService.get(item);
         model.addAttribute("item", item);
         return "/carrito/modificar";
     }
-    //Para eliminar un elemento del carrito
 
+    //Para eliminar un elemento del carrito
     @GetMapping("/carrito/eliminar/{idProducto}")
     public String eliminarItem(Item item) {
         itemService.delete(item);
         return "redirect:/carrito/listado";
     }
-    //Para actualizar un producto del carrito (cantidad)
 
+    //Para actualizar un producto del carrito (cantidad)
     @PostMapping("/carrito/guardar")
     public String guardarItem(Item item) {
         itemService.actualiza(item);
         return "redirect:/carrito/listado";
     }
-    //Para facturar los productos del carrito... no implementado...
 
+    //Para facturar los productos del carrito... no implementado...
     @GetMapping("/facturar/carrito")
     public String facturarCarrito() {
         itemService.facturar();
         return "redirect:/";
     }
+    
 }
 

@@ -4,6 +4,7 @@ import com.tecmave.domain.Producto;
 import com.tecmave.service.CategoriaService;
 import com.tecmave.service.ProductoService;
 import com.tecmave.service.impl.FirebaseStorageServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import lombok.extern.slf4j.Slf4j;
@@ -18,43 +19,44 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @RequestMapping("/producto")
 public class ProductoController {
-     
     @Autowired
-    private ProductoService productoService;
-    
+    ProductoService productoService;
+
     @Autowired
-    private CategoriaService categoriaService;
-    
+    CategoriaService categoriaService;
+
     @GetMapping("/listado")
-    public String inicio(Model model) {         
-        var productos = productoService.getProductos(false); 
-        var categorias = categoriaService.getCategorias(false); 
-        model.addAttribute("productos", productos);
-        model.addAttribute("categorias", categorias);
-        model.addAttribute("totalProductos", productos.size());         
-        return "/producto/listado";     
+    public String page(Model model) {
+        List<Producto> lista = productoService.getProductos(false);
+        model.addAttribute("productos", lista);
+        model.addAttribute("totalProductos", lista.size());
+        model.addAttribute("categorias", categoriaService.getCategorias(true));
+        return "/producto/listado";
     }
+
     @GetMapping("/nuevo")
-    public String productoNuevo(Producto producto){
+    public String productoNuevo(Producto producto) {
         return "/producto/modifica";
     }
-    
-    @Autowired
-    private FirebaseStorageServiceImpl firebaseStorageService;
-    
+
+//    @Autowired
+//    private FirebaseStorageServiceImpl firebaseStorageService;
+
     @PostMapping("/guardar")
-    public String productoGuardar(Producto producto, @RequestParam("imagenFile")MultipartFile imagenFile){
-        if (!imagenFile.isEmpty()) {
-            productoService.save(producto);
-            producto.setRutaImagen(
-                    firebaseStorageService.cargaImagen(
-                            imagenFile, 
-                            "producto", 
-                            producto.getIdProducto()));
-        }
+    public String productoGuardar(Producto producto,
+            @RequestParam("imagenFile") MultipartFile imagenFile) {
+//        if (!imagenFile.isEmpty()) {
+//            productoService.save(producto);
+//            producto.setRutaImagen(
+//                    firebaseStorageService.cargaImagen(
+//                            imagenFile,
+//                            "producto",
+//                            producto.getIdProducto()));
+//        }
         productoService.save(producto);
         return "redirect:/producto/listado";
     }
+
     @GetMapping("/eliminar/{idProducto}")
     public String productoEliminar(Producto producto) {
         productoService.delete(producto);
@@ -64,9 +66,8 @@ public class ProductoController {
     @GetMapping("/modificar/{idProducto}")
     public String productoModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
-        var categorias = categoriaService.getCategorias(false);
-        model.addAttribute("producto", producto); 
-        model.addAttribute("categorias", categorias);
+        model.addAttribute("producto", producto);
+        model.addAttribute("categorias", categoriaService.getCategorias(true));
         return "/producto/modifica";
-    }   
+    }
 }
