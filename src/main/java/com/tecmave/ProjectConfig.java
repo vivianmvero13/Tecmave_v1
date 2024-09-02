@@ -76,24 +76,20 @@ public class ProjectConfig implements WebMvcConfigurer {
         http
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/*.jpeg", "/*.png", "/*.js", "/index", "/errores/", "/refrescarBoton/",
-                        "/registro/**", "/js/**", "/webjars/**", "/comprar/**", "/promociones/**", "/ubicacion/**", "/servicios/**", "/nosotros/**", "/contactanos/**", "/cotizar/**")
+                        "/registro/**", "/js/**", "/webjars/**", "/comprar/**", "/promociones/**", "/ubicacion/**", "/servicios/**", "/nosotros/**", "/contactanos/**", "/cotizar/**", "/carrito/**")
                 .permitAll()
-                .requestMatchers(
-                        "/producto/nuevo", "/producto/guardar",
-                        "/producto/modificar/**", "/producto/eliminar/**",
-                        "/categoria/nuevo", "/categoria/guardar",
-                        "/categoria/modificar/**", "/categoria/eliminar/**",
-                        "/usuario/nuevo", "/usuario/guardar",
-                        "/usuario/modificar/**", "/usuario/eliminar/**",
-                        "/reportes/**"
-                ).hasRole("ADMIN")
                 .requestMatchers(
                         "/producto/listado",
                         "/categoria/listado",
                         "/usuario/listado"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
-                .requestMatchers("/facturar/carrito")
-                .hasRole("USER")
+                .requestMatchers(
+                        "/producto/nuevo", "/producto/guardar",
+                        "/producto/modificar/**", "/producto/eliminar/**",
+                        "/categoria/nuevo", "/categoria/guardar",
+                        "/categoria/modificar/**", "/categoria/eliminar/**",
+                        "/usuario/**"
+                ).hasRole("ADMIN")
                 )
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())
