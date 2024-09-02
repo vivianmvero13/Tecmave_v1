@@ -1,8 +1,4 @@
-$(document).ready(function () {
-    if($("#resultsBlock").length > 0){
-        cargarLista();
-    }    
-});
+
 
 function cargarLista(){
     var url = '/refrescarBoton';
