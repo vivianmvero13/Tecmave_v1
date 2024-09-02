@@ -62,36 +62,59 @@
                 </style>
                 </head>
                 <body>
-                    <header th:fragment="header" class="header">
-                        <nav class="navbar navbar-expand-sm navbar-dark bg-danger p-0"> <!-- Cambiado a bg-danger para el color rojo -->
-                            <div class="container">
-                                <!-- Logo en el lugar del texto de la marca -->
-                                <a th:href="@{/}" class="navbar-brand logo-container">
-                                    <img src="/logo.jpeg" class="logo"> <!-- Usamos el logo como enlace de la marca -->
-                                </a>
-                                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                                    <ul class="navbar-nav">
-                                        <li sec:authorize="hasRole('VENDEDOR')" class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
-                                        <li sec:authorize="hasRole('VENDEDOR')" class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
-                                        <li class="nav-item px-2"><a href="#">[[#{plantilla.contactanos}]]</a></li>
-                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/servicios/listado}">[[#{plantilla.servicios}]]</a></li>
-                                        <li class="nav-item px-2"><a class="nav-link" th:href="@{/nosotros/listado}">[[#{plantilla.nosotros}]]</a></li>
-                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/cotizar/listado}">[[#{plantilla.cotizar}]]</a></li>
-                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/ubicacion/listado}">[[#{plantilla.ubicacion}]]</a></li>
-                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/comprar/listado}">[[#{plantilla.comprar}]]</a></li> 
-                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/carrito/listado}">[[#{plantilla.carrito}]]</a></li> 
-                                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/promociones/listado}">[[#{plantilla.promociones}]]</a></li>
-                                        <li sec:authorize="hasRole('ADMIN')" class="nav-item px-2"><a class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
-                                    </ul>
-                                    <div class="col-md-1 ml-auto text-right">
-    <ul class="navbar-nav" style="font-size: 0.8rem;">
-        <li class="nav-item px-1"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>
-        <li class="nav-item px-1"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>
-    </ul>
-</div>
+                   <header th:fragment="header" class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger p-2">
+        <div class="container">
+            <!-- Logo -->
+             <a th:href="@{/}" class="navbar-brand me-3">
+                <img src="/logo.jpeg" class="logo" alt="Logo" style="height: 50px;">
+            </a>
+
+            <!-- Toggle button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li sec:authorize="hasRole('VENDEDOR')" class="nav-item">
+                        <a class="nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a>
+                    </li>
+                    <li sec:authorize="hasRole('VENDEDOR')" class="nav-item">
+                        <a class="nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/servicios/listado}">[[#{plantilla.servicios}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/nosotros/listado}">[[#{plantilla.nosotros}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cotizar/listado}">[[#{plantilla.cotizar}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/ubicacion/listado}">[[#{plantilla.ubicacion}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/comprar/listado}">[[#{plantilla.comprar}]]</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/carrito/listado}">[[#{plantilla.carrito}]]</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/promociones/listado}">[[#{plantilla.promociones}]]</a>
+                    </li>
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                        <a class="nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a>
+                    </li>
+                </ul>
+
+                <!-- Language switcher -->
+                <div class="d-flex align-items-center">
+                    <a class="nav-link px-2" th:href="@{/(lang=es)}">ES</a>
+                    <a class="nav-link px-2" th:href="@{/(lang=en)}">EN</a>
+                </div>
 
 
                                 </div>

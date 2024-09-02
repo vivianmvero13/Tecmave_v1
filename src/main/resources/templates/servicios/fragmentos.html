@@ -6,16 +6,16 @@
         
         <section th:fragment="servicios" class="py-4 mb-4 bg-light">
             <div th:style="'width: 80%; margin: 0 auto; padding: 20px; margin-top: 20px;'">
-        <h2>Nuestros Servicios</h2>
-        <p>Nuestros servicios ayudan a tu vehículo a tener una larga vida y durabilidad, esto debido a los materiales y a la calidad de productos utilizados.</p>
-        <p>Los servicios que brindamos van desde el mantenimiento preventivo hasta la mecánica rápida, ya que tenemos personal especializado para solucionar cualquier problema que tenga su vehículo.</p>
+        <h2>[[#{servicios.titulo}]]</h2>
+        <p>[[#{servicios.parrafo1}]]</p>
+        <p>[[#{servicios.parrafo2}]]</p>
         
         <div th:style="'display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;'">
             <!-- Servicio 1 -->
             <div th:style="'flex: 0 1 calc(33.33% - 20px); text-align: center;'">
                 <img src="/cambioLlantas.jpeg" alt="Cambio de Llantas" th:style="'width: 100%; max-width: 150px; height: auto; object-fit: cover;'"/>
                 <div th:style="'padding: 10px;'">
-                    <h3>Cambio de Llantas</h3>
+                    <h3>[[#{servicios.llantas}]]</h3>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
             <div th:style="'flex: 0 1 calc(33.33% - 20px); text-align: center;'">
                 <img src="/cambioBateria.jpeg" alt="Cambio de Batería" th:style="'width: 100%; max-width: 150px; height: auto; object-fit: cover;'"/>
                 <div th:style="'padding: 10px;'">
-                    <h3>Cambio de Batería</h3>
+                    <h3>[[#{servicios.bateria}]]</h3>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
             <div th:style="'flex: 0 1 calc(33.33% - 20px); text-align: center;'">
                 <img src="/mecanicaRapida.jpeg" alt="Mecánica Rápida" th:style="'width: 100%; max-width: 150px; height: auto; object-fit: cover;'"/>
                 <div th:style="'padding: 10px;'">
-                    <h3>Mecánica Rápida</h3>
+                    <h3>[[#{servicios.mrapida}]]</h3>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
             <div th:style="'flex: 0 1 calc(50% - 20px); text-align: center; margin-top: 20px;'">
                 <img src="/escaneoEstandar.jpeg" alt="Escaneo de Motor" th:style="'width: 100%; max-width: 150px; height: auto; object-fit: cover;'"/>
                 <div th:style="'padding: 10px;'">
-                    <h3>Escaneo de Motor</h3>
+                    <h3>[[#{servicios.escaneo}]]</h3>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
             <div th:style="'flex: 0 1 calc(50% - 20px); text-align: center; margin-top: 20px;'">
                 <img src="/cambioAceite.jpeg" alt="Cambio de Aceite" th:style="'width: 100%; max-width: 150px; height: auto; object-fit: cover;'"/>
                 <div th:style="'padding: 10px;'">
-                    <h3>Cambio de Aceite</h3>
+                    <h3>[[#{servicios.aceite}]]</h3>
                 </div>
             </div>
         </div>
