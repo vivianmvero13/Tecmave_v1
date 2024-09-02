@@ -54,7 +54,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-    
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -70,13 +70,13 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/", "/index", "/errores/","/refrescarBoton/","**",
-                        "/carrito/**", "/pruebas/**", "/reportes/**",
-                        "/registro/**", "/js/**", "/webjars/**")
+                .requestMatchers("/", "/*.jpeg", "/*.png", "/*.js", "/index", "/errores/", "/refrescarBoton/",
+                        "/registro/**", "/js/**", "/webjars/**", "/comprar/**", "/promociones/**", "/ubicacion/**", "/servicios/**", "/nosotros/**", "/contactanos/**", "/carrito/**", "/cotizar/**")
                 .permitAll()
                 .requestMatchers(
                         "/producto/nuevo", "/producto/guardar",

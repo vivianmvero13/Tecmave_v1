@@ -74,8 +74,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <ul class="navbar-nav">
-                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
-                        <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
+                        <li sec:authorize="hasRole('VENDEDOR')" class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a></li>
+                        <li sec:authorize="hasRole('VENDEDOR')" class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
                         <li class="nav-item px-2"><a href="#">[[#{plantilla.contactanos}]]</a></li>
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/servicios/listado}">[[#{plantilla.servicios}]]</a></li>
                         <li class="nav-item px-2"><a class="nav-link" th:href="@{/nosotros/listado}">[[#{plantilla.nosotros}]]</a></li>
@@ -84,6 +84,7 @@
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/comprar/listado}">[[#{plantilla.comprar}]]</a></li> 
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/carrito/listado}">[[#{plantilla.carrito}]]</a></li> 
                         <li class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/promociones/listado}">[[#{plantilla.promociones}]]</a></li>
+                        <li class="nav-item px-2" class="nav-item px-2"><a class="nav-menu-link nav-link" th:href="@{/usuario/listado}">[[#{plantilla.usuarios}]]</a></li>
                     </ul>
                     <div class="col-md-3">
                         <ul class="navbar-nav">
@@ -93,6 +94,34 @@
                     </div>
                 </div>
             </div>
+             <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                        <li class="nav-item px-2">
+                            <a class="nav-menu-link nav-link"
+                               th:href="@{/login}">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a> 
+                        </li>
+                        <li class="nav-item text-white my-auto">
+                            <i class="fas fa-user"></i>
+                            <span sec:authentication="name">Bob</span>
+                        </li>
+                        <li class="nav-item my-auto">
+                            <form method="post" th:action="@{/login}">
+                                <button class="btn btn-dark">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                        <li class="nav-item my-auto">
+                            <form method="post" th:action="@{/logout}">
+                                <button class="btn btn-dark">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
         </nav>
     </header>
         <footer th:fragment="footer" class="bg-dark text-white mt-5 p-2">
